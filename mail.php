@@ -7,7 +7,7 @@
  * @version
  */
 
-class MailSvc
+class mail
 {
     public static function send($to, $from, $subject, $headers = array())
     {
