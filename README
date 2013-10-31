@@ -1,9 +1,10 @@
 php utilities
 
-for easy using php utilities, more lightweight
+for easy using, more lightweight
 ----------------------------------------------
 done list:
 logp        --  log utility
+session     --  mysql session handler
 
 under going list:
 mail_svc    --  mail send utility
