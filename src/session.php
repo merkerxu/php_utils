@@ -200,18 +200,6 @@ class SessionDBHandler
     {/*{{{*/
         try
         {/*{{{*/
-            /*
-            $trace_arr = debug_backtrace();
-            $trace_str = '';
-            foreach($trace_arr as $index => $trace)
-            {
-                $trace_str .= '#' . $index . '|file=' . $trace['file'] . '|line=' . $trace['line'] .
-                    '|class=' . $trace['class'] . '|function=' . $trace['function'];
-            }
-            $trace_str .= "\n";
-            error_log($trace_str, 3, '/home/xuwei3/projects/fankui/logs/logout.log');
-            */
-
             $query = 'DELETE FROM %s WHERE %s=? LIMIT 1';
             $query = sprintf($query, self::SESSION_TABLE, self::FIELD_SESSION_ID);
             $stmt = $this->sess_pdo->prepare($query);
@@ -239,7 +227,6 @@ class SessionDBHandler
             $query = "DELETE FROM %s WHERE %s <= UNIX_TIMESTAMP(NOW())";
             $query = sprintf($query, self::SESSION_TABLE, self::FIELD_EXPIRE_AT);
             $count = $this->sess_pdo->exec($query);
-            //error_log("sess_gc:sql=" . $query . "|count=" . $count . "\n", 3, '/home/xuwei3/projects/fankui/logs/logout.log');
 
             return true;
         }
