@@ -3,7 +3,7 @@
  * logp logger for php
  */
 class logp
-{
+{/*{{{*/
     /*
      * LOG_EMEG system is unusable
      */
@@ -130,12 +130,13 @@ class logp
     private static function prepare_message($file, $line, $message,
         $params, $level)
     {/*{{{*/
-        $message_template = "[%addr%] [%datetime%] [%level%] [%session%]" .
+        $message_template = "[%addr%] [%datetime%] [%ms%] [%level%] [%session%]" .
             " [%pid%] [%memory%] [%file%:%line%] [%params%] %message%\n";
 
         $message_placeholders = array(
                     '%addr%'    => '%s',
                     '%datetime%'=> '%s',
+                    '%ms%'      => '%s',
                     '%level%'   => '%s',
                     '%session%' => '%s',
                     '%pid%'     => '%s',
@@ -151,7 +152,9 @@ class logp
 
         $msg_params = array();
         $msg_params['%addr%']     = self::get_client_ip();
-        $msg_params['%datetime%'] = date('Y-m-d H:i:s');
+        list($usec, $sec)         = explode(' ', microtime());
+        $msg_params['%datetime%'] = date('Y-m-d H:i:s', $sec);
+        $msg_params['%ms%']       = number_format($usec, 3);
         $msg_params['%level%']    = self::strlevel($level);
         $msg_params['%session%']  = isset($_SESSION) ? session_id() : '-';
         $msg_params['%pid%']      = getmypid();
@@ -267,4 +270,4 @@ class logp
                 $_SERVER['REMOTE_ADDR'] : '0.0.0.0';
         }
     }/*}}}*/
-}
+}/*}}}*/
