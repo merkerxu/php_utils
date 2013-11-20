@@ -30,8 +30,3 @@ class algo
         return (string)((10 - array_sum($digit_arr)%10)%10);
     }
 }
-
-/*
- * test:
- * echo luhn_algo::luhn('7992739871');
- */

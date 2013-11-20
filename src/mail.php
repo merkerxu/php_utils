@@ -9,7 +9,8 @@
 
 class mail
 {
-    public static function send($to, $from, $subject, $headers = array())
+    public static function send($to, $from, $subject, $msg,
+        $attach=null, $cc = null, $headers = array())
     {
     }
 }

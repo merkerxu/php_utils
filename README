@@ -7,4 +7,4 @@ logp        --  log utility
 session     --  mysql session handler
 
 under going list:
-mail_svc    --  mail send utility
+mail        --  mail sender utility
