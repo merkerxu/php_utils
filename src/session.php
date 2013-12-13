@@ -14,7 +14,7 @@
  * --------------sessions------------------------------
  */
 class SessionDBHandler
-{
+{/*{{{*/
     /*
      * session table name
      */
@@ -236,4 +236,4 @@ class SessionDBHandler
             die('error in ' . __METHOD__ . ' : ' . $e->getMessage());
         }
     }/*}}}*/
-}
+}/*}}}*/
