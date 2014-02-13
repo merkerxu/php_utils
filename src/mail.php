@@ -39,15 +39,15 @@ class mail_svc
         {/*{{{*/
             $body_str .= '--PHP-alt-' . $boundary_hash . "\n";
             $body_str .= 'Content-Type: text/plain; charset="UTF-8"' . "\n";
-            $body_str .= 'Content-Transfer-Encoding: 7bit' . "\n\n";
-            $body_str .= $plain_msg . "\n\n";
+            $body_str .= 'Content-Transfer-Encoding: base64' . "\n\n";
+            $body_str .= base64_encode($plain_msg) . "\n\n";
         }/*}}}*/
         if(!empty($html_msg))
         {/*{{{*/
             $body_str .= '--PHP-alt-' . $boundary_hash . "\n";
             $body_str .= 'Content-Type: text/html; charset="UTF-8"' . "\n";
-            $body_str .= "Content-Transfer-Encoding: 7bit\n\n";
-            $body_str .= $html_msg . "\n\n";
+            $body_str .= "Content-Transfer-Encoding: base64\n\n";
+            $body_str .= base64_encode($html_msg) . "\n\n";
         }/*}}}*/
         $body_str .= '--PHP-alt-' . $boundary_hash . "--\n\n";
         if(!empty($attachments))
